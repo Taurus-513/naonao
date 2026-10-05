@@ -153,7 +153,7 @@ idle 使用上面的语义映射；sleep/dragged 循环，petted 单次播放，
 
 selftest 覆盖资源发现/排序/预览排除、缺失动作回退、新增动作发现、优先级、眨眼叠加层及 120ms 持续时间、睡眠不被眨眼打断、唤醒、警觉时长、随机睡眠、待机变体、帧语义及四档缩放的脚底补偿。
 
-新增检查涵盖 sleep/petted 四帧资源、256×256 RGBA 编码、睡眠循环及唤醒返回 idle、被摸动作播放及末帧保持、拖拽优先级与专属动作缺失时的回退。生成提示词和新素材整理方法记录在 `renderer/generated-assets.md`。整理脚本只接受新动作目录，不覆盖旧目录，原有 idle 素材保持不变。
+新增检查涵盖 sleep/petted 四帧资源、256×256 RGBA 编码、睡眠循环及唤醒返回 idle、被摸动作播放及末帧保持、拖拽优先级与专属动作缺失时的回退。生成提示词和素材整理记录仅在本机保留，不纳入发布仓库。整理脚本只接受新动作目录，不覆盖旧目录，原有 idle 素材保持不变。
 
 实际点击穿透需要 macOS 图形会话：把另一个窗口的可点击控件放在宠物窗口透明角落下面，先移动鼠标再点击，确认下层控件响应；随后点击猫身体确认被摸反馈，再拖拽确认松手落地。仅自检通过不能证明操作系统级穿透通过。
 
@@ -177,12 +177,12 @@ selftest 覆盖资源发现/排序/预览排除、缺失动作回退、新增动
 
 ## 固定拖拽与下落姿势
 
-用户选定被拎起 A、下落 B。新增 assets/lifted/frame1.png 与 assets/falling/frame1.png，均为固定单帧、256×256 RGBA。真实拖拽只显示 lifted；松手重力下落只显示 falling；落地回待机。旧 dragged 四帧保留作菜单预览，不再用于真实拖拽。draggedFrameDurationMs 仅影响旧动作预览。原始候选与提示词保存在 renderer/pose-candidates/。
+用户选定被拎起 A、下落 B。新增 assets/lifted/frame1.png 与 assets/falling/frame1.png，均为固定单帧、256×256 RGBA。真实拖拽只显示 lifted；松手重力下落只显示 falling；落地回待机。旧 dragged 四帧保留作菜单预览，不再用于真实拖拽。draggedFrameDurationMs 仅影响旧动作预览。原始候选与提示词仅在本机保留，不上传。
 
 ## 八帧版本验证
 
 `npm start -- --selftest` 检查 64 张新 RGBA 帧、闭眼 120ms、左右转头顺序与倒序、歪头保持与返回、入睡→呼吸→醒来、提前醒来逆播、交互打断及固定拖拽/下落。
 `npm start -- --diagnostics --verify-animation` 在真实窗口中依次播放入睡、呼吸、醒来、抚摸与警觉，检查恢复待机；测试阶段暂不采纳鼠标靠近，结束后恢复正常交互。
-生成模式为内置 imagegen，完整提示词和资产目录记录在 [renderer/smooth-assets.md](renderer/smooth-assets.md)。旧素材保持不变。
+生成模式为内置 imagegen；制作记录与原始生成图仅在本机保留，仓库只包含运行用动作帧。旧素材保持不变。
 
 新版 idle-tilt 八帧统一做 1.09 倍显示补偿，以 (128,248) 为缩放锚点；脚底不移动，点击 alpha 同步按补偿后的画面缓存，源 PNG 不修改。
