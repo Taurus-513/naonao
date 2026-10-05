@@ -25,3 +25,8 @@ source-sheet.png
 *.pem
 *.key
 *.log
+
+# Local sprite previews and generation notes
+_preview.png
+/renderer/generated-assets.md
+/renderer/smooth-assets.md
