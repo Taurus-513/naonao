@@ -1,0 +1,4 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>点击穿透验收</title>
+<style>html,body{margin:0;height:100%;font:24px system-ui;background:#dbe9f4}button{position:fixed;inset:0;width:100%;height:100%;background:#dbe9f4;border:0;font:inherit;color:#132c40;cursor:pointer}span{position:absolute;top:30px;left:30px;text-align:left;pointer-events:none}</style>
+<button id="target" aria-label="下层窗口点击计数：0"><span id="status">下层窗口点击计数：0<br>透明区域点击应增加计数；猫身体点击应被宠物接收。<br>此页面仅用于手动 GUI 验收，不被桌面宠物加载。</span></button>
+<script>let count=0;document.getElementById('target').onclick=()=>{count++;document.getElementById('status').textContent='下层窗口点击计数：'+count;document.getElementById('target').setAttribute('aria-label','下层窗口点击计数：'+count);};</script></html>

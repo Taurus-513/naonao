@@ -1,0 +1,27 @@
+# 依赖：Electron 的运行时在 node_modules/electron/dist/，解压后单个文件远超 GitHub 100MB 上限
+node_modules/
+
+# 首次 GUI 启动由 main.js 自动生成，托盘改缩放会写回，属本机状态
+config.json
+
+# 图片生成中间产物，README 的目录说明里未引用
+output/
+
+# macOS
+.DS_Store
+
+# Private reference images and generation intermediates
+/picture/
+/cat/
+/tools/
+/previews/
+/renderer/pose-candidates/
+/renderer/prepare*.js
+/renderer/clean-selected-poses.js
+source-sheet.png
+
+# Local credentials and logs
+.env*
+*.pem
+*.key
+*.log

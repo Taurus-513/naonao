@@ -1,0 +1,3 @@
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: transparent; user-select: none; }
+canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+canvas.petted { filter: brightness(1.12); }
